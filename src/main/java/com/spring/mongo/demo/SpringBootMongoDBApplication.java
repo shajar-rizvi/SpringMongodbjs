@@ -1,7 +1,9 @@
 package com.spring.mongo.demo;
 
+import com.spring.mongo.demo.model.AppUser;
 import com.spring.mongo.demo.model.Employee;
 import com.spring.mongo.demo.model.SuperHero;
+import com.spring.mongo.demo.repository.AppUserRepository;
 import com.spring.mongo.demo.repository.EmployeeRepository;
 import com.spring.mongo.demo.repository.SuperHeroRepository;
 import com.spring.mongo.demo.utils.HelperUtil;
@@ -35,7 +37,8 @@ public class SpringBootMongoDBApplication {
 	@Autowired
 	private SuperHeroRepository superHeroRepository;
 
-	
+	@Autowired
+	private AppUserRepository appUserRepository;
 	@Bean
 	CommandLineRunner runner() {
 		return args -> {
@@ -55,6 +58,14 @@ public class SpringBootMongoDBApplication {
 			} else {
 				LOGGER.info("******* Super heroes stored in DB Size :: {}", superHeroes.size());
 				LOGGER.info("******* Super heroes stored in DB :: {}", superHeroes);
+			}
+			List<AppUser> appUsers = appUserRepository.findAll();
+			if (appUsers.size() == 0) {
+				LOGGER.info("******* Inserting AppUser to DB *******");
+				appUserRepository.saveAll(HelperUtil.userAppSupplier.get());
+			} else {
+				LOGGER.info("******* AppUser stored in DB Size :: {}", superHeroes.size());
+				LOGGER.info("******* AppUser stored in DB :: {}", superHeroes);
 			}
 		};
 	}

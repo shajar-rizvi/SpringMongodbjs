@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
+import com.spring.mongo.demo.model.AppUser;
 import com.spring.mongo.demo.model.Employee;
 import com.spring.mongo.demo.model.SuperHero;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class HelperUtil {
 
@@ -36,6 +38,14 @@ public class HelperUtil {
                     SuperHero.builder().name("Steve").superName("Captain America").profession("Solder").age(120).canFly(false).build(),
                     SuperHero.builder().name("Tony").superName("Iron Man").profession("Business man").age(45).canFly(true).build(),
                     SuperHero.builder().name("Peter").superName("Spider Man").profession("Student").age(21).canFly(true).build()
+            );
+    public static Supplier<List<AppUser>> userAppSupplier = () ->
+            Arrays.asList(
+					AppUser.builder().username("nadeem").email("nadeem@gmail.com").password("nadeem").build()
+//                    SuperHero.builder().name("Bruce").superName("Hulk").profession("Doctor").age(50).canFly(false).build(),
+//                    SuperHero.builder().name("Steve").superName("Captain America").profession("Solder").age(120).canFly(false).build(),
+//                    SuperHero.builder().name("Tony").superName("Iron Man").profession("Business man").age(45).canFly(true).build(),
+//                    SuperHero.builder().name("Peter").superName("Spider Man").profession("Student").age(21).canFly(true).build()
             );
 
 

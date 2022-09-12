@@ -8,18 +8,22 @@ import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Employee implements Serializable {
+public class AppUser implements Serializable {
 
-	@Id
-	private String id;
+  @Id
+  private String id;
 
-	private int empId;
-	private String firstName;
-	private String lastName;
-	private float salary;
-	private float purpoose;
+
+  private String username;
+  private String email;
+  private String password;
+
+//  @ElementCollection(fetch = FetchType.EAGER)
+//  List<AppUserRole> appUserRoles;
+
 }
